@@ -1,6 +1,6 @@
 #!/bin/bash
-export PYTHONPATH=".."
-cd tests
+export PYTHONPATH="../.."
+cd maroon/tests
 for t in basic file
 do
     echo "running $t"
@@ -11,8 +11,9 @@ echo "running mock"
 python database_tests.py mock
 python query_tests.py mock
 
-echo "running couch"
-python database_tests.py couch
+# I don't really use couch anymore...
+#echo "running couch"
+#python database_tests.py couch
 
 echo "running mongo"
 python database_tests.py mongo

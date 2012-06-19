@@ -9,10 +9,7 @@ import datetime
 import pymongo
 
 import maroon
-from maroon import Model, IntProperty, Property
-from mongo import MongoDB
-from mock import MockDB
-from couch import CouchDB
+from maroon import Model
 from models import SimpleModel, FunModel, PersonModel
 
 
@@ -119,16 +116,16 @@ if __name__ == '__main__':
     db = sys.argv[1]
     models = ('SimpleModel', 'FunModel', 'PersonModel')
     if db=='mongo':
-        Model.database = MongoDB(None,'test_maroon', port=2727)
+        Model.database = maroon.MongoDB(None,'test_maroon', port=2727)
         for m in models:
             Model.database[m].remove()
     elif db=='mock':
-        Model.database = MockDB()
+        Model.database = maroon.MockDB()
     elif db=='couch':
         for m in models:
             url = 'http://127.0.0.1:5984/'
             cls = locals()[m]
-            cls.database = CouchDB(url+'test_maroon_'+m.lower(),True)
+            cls.database = maroon.CouchDB(url+'test_maroon_'+m.lower(),True)
             cls.database.flush()
     else:
         print "Usage: ./database_tests.py [mongo|couch|mock]"

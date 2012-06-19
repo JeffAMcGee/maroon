@@ -3,12 +3,9 @@ from tee import TeeDB
 from mock import MockDB
 from maroondb import MaroonDB, ASCENDING, DESCENDING
 
-try:
-    from mongo import MongoDB
-except ImportError:
-    pass
+from mongo import MongoDB
 
 try:
-    from couch import CouchDB
+    from maroon.couch import CouchDB
 except ImportError:
     pass

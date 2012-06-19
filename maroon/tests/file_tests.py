@@ -8,9 +8,9 @@ import json
 import tempfile
 
 import maroon
-from mock import MockDB
-from mongo import MongoDB
-from tee import TeeDB
+from maroon.mock import MockDB
+from maroon.mongo import MongoDB
+from maroon.tee import TeeDB
 
 from models import PersonModel, SimpleModel
 import models
