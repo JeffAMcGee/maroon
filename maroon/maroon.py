@@ -399,6 +399,7 @@ class ModelListProperty(ListProperty):
 class Model(ModelPart):
     _id = IdProperty("_id")
     _rev = IdProperty('_rev')
+    database = None
 
     def save(self):
         "Save the model to the database, may overwrite existing objects"

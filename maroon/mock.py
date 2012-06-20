@@ -14,8 +14,12 @@ class MockDB(MaroonDB):
     def __init__(self, path=None, module=None):
         self.data = defaultdict(dict)
         if path and module:
-            for filepath in glob.glob(path+"/*.json"):
-                self._import_json(filepath,module)
+            self.import_db(path,module)
+
+    def import_db(self,path,module):
+        # only for MockDB!
+        for filepath in glob.glob(path+"/*.json"):
+            self._import_json(filepath,module)
 
     def _import_json(self,path,module):
         name = path.rpartition('/')[2].replace(".json","")
